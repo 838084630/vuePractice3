@@ -25,8 +25,8 @@
                 label="操作"
                 >
             <template slot-scope="scope">
-                <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-                <el-button type="text" size="small">编辑</el-button>
+                <el-button @click="updateBtn(scope.row)" type="text" size="small">编辑</el-button>
+                <el-button @click="deleteBtn(scope.row)" type="text" size="small">删除</el-button>
             </template>
         </el-table-column>
     </el-table>
@@ -43,9 +43,13 @@
 <script>
     export default {
         methods: {
-            handleClick(row) {
+            updateBtn(row) {
                 console.log(row);
             },
+            deleteBtn(row) {
+                console.log(row);
+            },
+
             page(currentPage){
                 axios.get('http://localhost:8081/book/findAll/'+currentPage+'/3').then((resp) => {
                     this.tableData = resp.data.content
